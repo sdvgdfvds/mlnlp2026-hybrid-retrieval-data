@@ -1,0 +1,8 @@
+{
+  "ann_backend": "faiss.IndexFlatIP",
+  "embedder_provider": "sentence_transformers",
+  "embedder_model": "BAAI/bge-small-en-v1.5",
+  "device": "cuda",
+  "paper_safe": true,
+  "reranker_override": null
+}

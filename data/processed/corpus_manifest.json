@@ -1,0 +1,29 @@
+[
+  {
+    "doc_id": "cdc-prep-2021",
+    "title": "Preexposure Prophylaxis for the Prevention of HIV Infection in the United States \u2014 2021 Update",
+    "source_url": "https://stacks.cdc.gov/view/cdc/112360",
+    "path": "data/raw/cdc-prep-2021.pdf",
+    "sha256": "af24f26879c9446f47fef6234232f60d83084d9dd28785efa7f30dd8fae3a883",
+    "pages": 108,
+    "chunks": 160
+  },
+  {
+    "doc_id": "cdc-opioid-2022",
+    "title": "CDC Clinical Practice Guideline for Prescribing Opioids for Pain \u2014 United States, 2022",
+    "source_url": "https://stacks.cdc.gov/view/cdc/122248",
+    "path": "data/raw/cdc-opioid-2022.pdf",
+    "sha256": "f4e5098d13e9b3dc5cc27bb90137df57d3667350b2add885fd367f279402d18d",
+    "pages": 100,
+    "chunks": 317
+  },
+  {
+    "doc_id": "cdc-hcv-perinatal-2023",
+    "title": "CDC Recommendations for Hepatitis C Testing Among Perinatally Exposed Infants and Children \u2014 United States, 2023",
+    "source_url": "https://stacks.cdc.gov/view/cdc/169944",
+    "path": "data/raw/cdc-hcv-perinatal-2023.pdf",
+    "sha256": "bb29707b687ef6522c2f286d370cf1989867a57d70eb7d526fc729debb1a0464",
+    "pages": 22,
+    "chunks": 63
+  }
+]

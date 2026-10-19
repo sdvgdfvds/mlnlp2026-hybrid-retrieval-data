@@ -1,0 +1,9 @@
+{
+  "n": 127,
+  "saved_reranker_misses": 20,
+  "miss_gold_in_pool20": 16,
+  "miss_gold_not_in_pool20": 4,
+  "hybrid_top5_matches_saved": 127,
+  "reranker_top5_matches_saved": 127,
+  "note": "Pool is the hybrid top 20 before the cross-encoder. Main tables were not rewritten."
+}

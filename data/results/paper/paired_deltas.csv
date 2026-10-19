@@ -1,0 +1,10 @@
+contrast,metric,n,mean,ci95_low,ci95_high,ci_excludes_zero
+hybrid_minus_vector,recall_at_k,127,0.063,0.0157,0.1181,True
+hybrid_minus_vector,mrr,127,0.1458,0.0935,0.1957,True
+hybrid_minus_vector,ndcg_at_k,127,0.1255,0.0812,0.1706,True
+reranker_minus_hybrid,recall_at_k,127,0.0787,0.0079,0.1496,True
+reranker_minus_hybrid,mrr,127,0.0251,-0.0507,0.0979,False
+reranker_minus_hybrid,ndcg_at_k,127,0.0385,-0.0315,0.1085,False
+reranker_minus_vector,recall_at_k,127,0.1417,0.0709,0.2205,True
+reranker_minus_vector,mrr,127,0.1709,0.0959,0.2403,True
+reranker_minus_vector,ndcg_at_k,127,0.164,0.0948,0.2324,True

@@ -1,0 +1,75 @@
+# MLNLP 2026 vertical-domain RAG ablation.
+# Only the retriever changes across the three systems. Chunks, generator, and prompt stay fixed.
+
+corpus:
+  language: en
+  license_note: "U.S. government works, public domain. See DATA_SOURCES.md."
+  documents:
+    - doc_id: cdc-prep-2021
+      path: data/raw/cdc-prep-2021.pdf
+      title: "Preexposure Prophylaxis for the Prevention of HIV Infection in the United States — 2021 Update"
+      source_url: "https://stacks.cdc.gov/view/cdc/112360"
+    - doc_id: cdc-opioid-2022
+      path: data/raw/cdc-opioid-2022.pdf
+      title: "CDC Clinical Practice Guideline for Prescribing Opioids for Pain — United States, 2022"
+      source_url: "https://stacks.cdc.gov/view/cdc/122248"
+    - doc_id: cdc-hcv-perinatal-2023
+      path: data/raw/cdc-hcv-perinatal-2023.pdf
+      title: "CDC Recommendations for Hepatitis C Testing Among Perinatally Exposed Infants and Children — United States, 2023"
+      source_url: "https://stacks.cdc.gov/view/cdc/169944"
+
+chunk:
+  target_words: 320
+  overlap_words: 60
+  min_words: 80
+  header_page_fraction: 0.35
+
+retrieval:
+  top_k: 5
+  candidate_n: 20
+  rrf_k: 60
+
+# cuda uses the NVIDIA GPU. The installed torch must be a CUDA build;
+# the default PyPI wheel is CPU-only and will not see the 4060.
+device: cuda
+
+embedder:
+  # sentence_transformers uses a real model and is what the paper should report.
+  # hash is a wiring check only. Smoke runs refuse to write into data/results/paper.
+  provider: sentence_transformers
+  model: BAAI/bge-small-en-v1.5
+  query_prefix: "Represent this sentence for searching relevant passages: "
+  batch_size: 32
+
+reranker:
+  provider: sentence_transformers
+  model: BAAI/bge-reranker-base
+
+generator:
+  temperature: 0
+  max_tokens: 400
+  # Keys come from the environment. See .env.example.
+  # QA_API_BASE, QA_API_KEY, QA_MODEL
+  # JUDGE_API_BASE, JUDGE_API_KEY, JUDGE_MODEL
+  # The judge model must differ from the generator.
+
+qa_generation:
+  questions_per_chunk: 1
+  max_words_copied: 3
+  retries: 3
+
+evaluation:
+  bootstrap_samples: 1000
+  seed: 20261001
+  # Identity probes and other wiring checks are never mixed into paper tables.
+  paper_question_sources:
+    - llm
+    - human_spotcheck
+
+output:
+  chunks: data/processed/chunks.jsonl
+  manifest: data/processed/corpus_manifest.json
+  dataset: data/processed/dataset.jsonl
+  index_dir: data/index
+  paper_dir: data/results/paper
+  smoke_dir: data/results/smoke
